@@ -2,7 +2,7 @@ Steps to Run the project
 1.	Download the zip from GITHub Repository from https://github.com/manojkumar222mbd/Assignment
 2.	Resources which are need to be install to run the project
     (1).	Node set up version 6 above ( install from node.org)
-    (2).	MongoDb ( install from window .msi)
+    (2).	MongoDb ( install from window .msi) and Start the mongodb server by cmd : mongo
     (3).	Angular CLI (npm install  –g @angular/cli )
 3.	Unzip the Assignment folder
 4.	Go to nodeapi directory and install the required NPM Packeges by cmd terminal :
