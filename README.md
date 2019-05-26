@@ -7,7 +7,7 @@ Steps to Run the project
 3.	Unzip the Assignment folder
 4.	Go to nodeapi directory and install the required NPM Packeges by cmd terminal :
  C:\Assignment\nodepai> npm install -d
-5.	Go to frontend directory and install required NPM Packages by cmd terminal :
+5.	Go to frontendapp directory and install required NPM Packages by cmd terminal :
  C:\ Assignment\frontend>  npm install -d
 6.	Now go to nodeapi from terminal and Run the command  to start the api–
 C:\Assignment\nodepai> node app
