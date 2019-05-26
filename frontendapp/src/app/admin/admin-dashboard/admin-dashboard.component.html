@@ -1,0 +1,117 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+    <a class="navbar-brand" href="#">Admin</a>
+    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+        <!-- <span class="navbar-toggler-icon"></span> -->
+        <i class="fa fa-bars text-muted" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown" ngbDropdown>
+                <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                    <i class="fa fa-user"></i> admin <b class="caret"></b>
+                </a>
+                <div class="dropdown-menu-right" ngbDropdownMenu>
+                    <a class="dropdown-item" (click)="logOut()">
+                        <i class="fa fa-fw fa-power-off" ></i> Log Out
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+    <div class="list-group">
+        <a routerLink="/admin/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+            <span>Dashboard</span>
+        </a>
+		<a (click)="logOut()" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-power-off"></i>&nbsp;
+            <span>Logout</span>
+        </a>
+    </div>
+	 <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
+        <i class="fa fa-fw fa-angle-double-{{collapsed?'right':'left'}}"></i>&nbsp;
+    </div>
+</nav>
+<section class="main-container" >
+	<div class="row">
+	<div class="col-xl-3 col-lg-6" *ngFor="let CardObj of cardArr">
+           <div class="card text-white bg-{{CardObj.class}}">
+				<div class="card-header">
+					<div class="row">
+						<div class="col col-xs-3">
+							<i class="fa fa-{{CardObj.icon}} fa-5x"></i>
+						</div>
+						<div class="col col-xs-9 text-right">
+							<div class="d-block huge">{{CardObj.text}}</div>
+							<div class="d-block">{{CardObj.count}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+        </div>
+    </div>
+	<hr/>
+	 <div class="card mb-3">
+                <div class="card-header">Company List<button class="btn btn-warning btn-sm pull-right" (click)="getCompany()">Refresh</button></div>
+                <table class="card-body table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+						<th>Company Name</th>
+						<th>License Start</th>
+						<th>License End</th>
+						<th>Status</th>
+						<th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="table-{{Obj.activestatus?'success':'danger'}}" *ngFor="let Obj of companyArr;let i=index">
+                        <th>{{i+1}}</th>
+                        <td>{{Obj.firstname+' '+Obj.lastname}}</td>
+                        <td>{{Obj.email}}</td>
+                        <td>{{Obj.companyname}}</td>
+						<td>{{Obj.license_startdate}}</td>
+						<td>{{Obj.license_enddate}}</td>
+                        <td>
+							<span >{{Obj.activestatus?'Active':'Inactive'}}</span>
+						</td>
+                        <td>
+							<button class="btn btn-success btn-sm" (click)="open(content,Obj)">Edit</button> &nbsp;
+							<button class="btn btn-danger btn-sm " (click)="deleteCompany(Obj._id)">Delete</button>
+						</td>
+                    </tr>
+                </table>
+            </div>
+</section>
+
+ <ng-template #content let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<h4 class="modal-title">{{'Edit Company Name'}}</h4>
+		</div>
+		<div class="modal-body">
+			<fieldset class="form-group"  datepicker-input>
+				<label>License Start Date</label>
+				<input class="form-control" name="d1" [(ngModel)]="CompanyData.license_startdate" (select)="onDateSelected()" ngbDatepicker #d1="ngbDatepicker" (click)="d1.toggle()" >
+			</fieldset>
+			<fieldset class="form-group" datepicker-input>
+				<label>License End Date</label>
+				<input class="form-control" name="d2" [(ngModel)]="CompanyData.license_enddate" ngbDatepicker #d2="ngbDatepicker" (click)="d2.toggle()">
+			</fieldset>
+			<fieldset class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" [(ngModel)]="CompanyData.activestatus">
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                    </select>
+            </fieldset>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-success btn-sm" (click)="submitEditDetails()">Update</button>
+			<button type="button" class="btn btn-danger btn-sm" (click)="c('Close click')">Close</button>
+		</div>
+</ng-template>

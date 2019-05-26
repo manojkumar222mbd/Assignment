@@ -1,0 +1,39 @@
+<div class="login-page" [@routerTransition]>
+<h1>Company Registration</h1>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="CompanyData.firstname" class="form-control input-underline input-lg" placeholder="First Name*">
+                    </div>
+					<div class="form-group">
+                        <input type="text" [(ngModel)]="CompanyData.lastname" class="form-control input-underline input-lg" placeholder="Last Name*">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="CompanyData.email" class="form-control input-underline input-lg"  placeholder="Email">
+                    </div>
+					<div class="form-group">
+                        <input type="text" [(ngModel)]="CompanyData.companyname" class="form-control input-underline input-lg"  placeholder="Company Name*">
+                    </div>
+                </div>
+        </div>
+		<div class="col-md-4">
+                <div class="form-content">
+					<div class="form-group datepicker-input" >
+                        <input type="text" [(ngModel)]="CompanyData.license_startdate" class="form-control input-underline input-lg"  placeholder="License Start From*"  ngbDatepicker #d1="ngbDatepicker" (click)="d1.toggle()" [(ngModel)]="model1">
+                    </div>
+					<div class="form-group datepicker-input">
+                        <input type="text" [(ngModel)]="CompanyData.license_enddate" class="form-control input-underline input-lg"  placeholder="License Start End*" ngbDatepicker #d2="ngbDatepicker" (click)="d2.toggle()" [(ngModel)]="model2">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" [(ngModel)]="CompanyData.password" class="form-control input-underline input-lg"  placeholder="Password*">
+                    </div>
+					<div class="form-group">
+                        <input type="password" [(ngModel)]="confirmpwd" class="form-control input-underline input-lg" placeholder="Confirm Password*">
+                    </div>
+                </div>
+                <a class="btn rounded-btn" (click)="RegisterNewCompany()"  > Register </a> &nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/login']" >Log in</a>
+        </div>
+    </div>
+</div>
