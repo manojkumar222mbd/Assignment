@@ -1,4 +1,4 @@
-Steps to Run the project
+*Steps to Run the project*
 1.	Download the zip from GITHub Repository from https://github.com/manojkumar222mbd/Assignment
 2.	Resources which are need to be install to run the project
     (1).	Node set up version 6 above ( install from node.org)
