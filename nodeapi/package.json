@@ -9,7 +9,7 @@
   "author": "Manoj",
   "license": "ISC",
   "dependencies": {
-    "async": "^3.0.0",
+    "async": "^3.2.2",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
